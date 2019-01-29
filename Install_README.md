@@ -24,55 +24,55 @@ PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 ### Configuración archivos .xml (aplica para todos los nodos, ya sean master o slave):
 
 * `/usr/local/hadoop/etc/hadoop/core-site.xml`: 
-```
-    &lt;configuration>
-        &lt;property>
-            &lt;name>fs.defaultFS&lt;/name>
-            &lt;value>hdfs://masterNodo:9000&lt;/value>
-        &lt;/property>
-    &lt;/configuration>
+```xml
+    <configuration>
+        <property>
+            <name>fs.defaultFS</name>
+            <value>hdfs://masterNodo:9000</value>
+        </property>
+    </configuration>
 ```
 * `/usr/local/hadoop/etc/hadoop/hdfs-site.xml`:
-```
-    &lt;configuration>
-        &lt;property>
-            &lt;name>dfs.replication&lt;/name>
-            &lt;value>3&lt;/value>
-        &lt;/property>
-        &lt;property>
-            &lt;name>dfs.namenode.name.dir&lt;/name>
-            &lt;value>/usr/local/hadoop/hadoop_data/hdfs/namenode&lt;/value>
-        &lt;/property>
-        &lt;property>
-            &lt;name>dfs.datanode.data.dir&lt;/name>
-            &lt;value>/usr/local/hadoop/hadoop_data/hdfs/datanode&lt;/value>
-        &lt;/property>
-    &lt;/configuration>
+```xml
+    <configuration>
+        <property>
+            <name>dfs.replication</name>
+            <value>3</value>
+        </property>
+        <property>
+            <name>dfs.namenode.name.dir</name>
+            <value>/usr/local/hadoop/hadoop_data/hdfs/namenode</value>
+        </property>
+        <property>
+            <name>dfs.datanode.data.dir</name>
+            <value>/usr/local/hadoop/hadoop_data/hdfs/datanode</value>
+        </property>
+    </configuration>
 ```
 * `/usr/local/hadoop/etc/hadoop/yarn-site.xml`:
-```
-    &lt;configuration>
-        &lt;property>
-            &lt;name>yarn.nodemanager.aux-services&lt;/name>
-            &lt;value>mapreduce_shuffle&lt;/value>
-        &lt;/property>
-        &lt;property>
-            &lt;name>yarn.nodemanager.aux-services.mapreduce.shuffle.class&lt;/name>
-            &lt;value>org.apache.hadoop.mapred.ShuffleHandler&lt;/value>
-        &lt;/property>
-        &lt;property>
-            &lt;name>yarn.resourcemanager.resource-tracker.address&lt;/name>
-            &lt;value>dominioNodoMaster:8025&lt;/value>      
-        &lt;/property>
-        &lt;property>
-            &lt;name>yarn.resourcemanager.scheduler.address&lt;/name>
-            &lt;value>dominioNodoMaster:8030&lt;/value>      
-        &lt;/property>
-        &lt;property>
-            &lt;name>yarn.resourcemanager.address&lt;/name>
-            &lt;value>dominioNodoMaster:8050&lt;/value>       
-        &lt;/property>
-    &lt;/configuration>
+```xml
+    <configuration>
+        <property>
+            <name>yarn.nodemanager.aux-services</name>
+            <value>mapreduce_shuffle</value>
+        </property>
+        <property>
+            <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+            <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+        </property>
+        <property>
+            <name>yarn.resourcemanager.resource-tracker.address</name>
+            <value>dominioNodoMaster:8025</value>      
+        </property>
+        <property>
+            <name>yarn.resourcemanager.scheduler.address</name>
+            <value>dominioNodoMaster:8030</value>      
+        </property>
+        <property>
+            <name>yarn.resourcemanager.address</name>
+            <value>dominioNodoMaster:8050</value>       
+        </property>
+    </configuration>
 ```
 * `/usr/local/hadoop/etc/hadoop/mapred-site.xml` (copiar de `mapred-site.xml.template`):
 
