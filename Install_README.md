@@ -164,3 +164,11 @@ hadoop jar $HADOOP_HOME/hadoop-streaming-2.9.2-sources.jar \
     -output myOutputDir \
     -mapper /bin/cat \
     -reducer /bin/wc
+
+# Instalación Cassandra
+* Tener instalado java como se describió en la instalación de Hadoop
+* Descargar y extraer Cassandra: https://www-us.apache.org/dist/cassandra/3.0.17/apache-cassandra-3.0.17-bin.tar.gz
+* Mover carpeta a /usr/local (o al directorio de preferencia, ahora $CASSANDRA_HOME).
+* Agregar a ~/.bashrc:
+export CASSANDRA_HOME=/usr/local/cassandra
+export PATH=$PATH:$CASSANDRA_HOME/bin
