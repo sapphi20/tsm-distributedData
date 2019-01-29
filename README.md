@@ -2,7 +2,7 @@
 
 Algunas cosas que realicé para la práctica 1 en TecnoSmart SpA.
 
-### Carpeta Test
+### Test
 
 Contiene dos videos y un log de ejemplo:
 
@@ -10,3 +10,4 @@ Contiene dos videos y un log de ejemplo:
 * `test_tfidf_2.mp4`: Lo mismo que el video
 * `log_test_1.txt`: Registro de Spark + prints del script copiados desde lo obtenido en la terminal por la salida estándar.
 
+### Scripts

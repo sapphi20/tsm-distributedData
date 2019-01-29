@@ -157,7 +157,7 @@ export LD_LIBRARY_PATH=/home/hadoop/hadoop/lib/native:$LD_LIBRARY_PATH
 ### Instalar PySpark
 
 Ejecutar `pip install pyspark`. Es una librería de python.
-El comando pyspark abre una shell de python con la librería de pyspark ya importada.
+El comando pyspark abre una shell de python con la librería de pyspark ya importada. También se puede importar para hacer scripts (ejecutados con `spark-submit <nombre_script>.py`).
 
 # Wordbatch
 
@@ -189,3 +189,14 @@ hadoop jar $HADOOP_HOME/hadoop-streaming-2.9.2-sources.jar \
     export CASSANDRA_HOME=/usr/local/cassandra
     export PATH=$PATH:$CASSANDRA_HOME/bin
     ```
+
+## Conector de Spark con Cassandra
+Hay que tener `git` y `sbt` instalado.
+
+Luego se clona el repositorio: `https://github.com/anguenot/pyspark-cassandra.git`
+
+Luego se ejecuta lo siguiente (se va a demorar un rato):
+```
+cd pyspark-cassandra
+sbt compile 
+```
