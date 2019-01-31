@@ -149,6 +149,11 @@ export LD_LIBRARY_PATH=/home/hadoop/hadoop/lib/native:$LD_LIBRARY_PATH
 ```
 * Renombrar:
 ```mv /usr/local/spark/conf/spark-defaults.conf.template /usr/local/spark/conf/spark-defaults.conf```
+* En `/usr/local/spark/conf/spark-env.sh` agregar:
+```
+export SPARK_LOCAL_IP=<IP de la máquina actual>
+export SPARK_MASTER_HOST=<IP del master>
+```
 
 ### Integrar Spark con YARN
 
@@ -190,10 +195,22 @@ hadoop jar $HADOOP_HOME/hadoop-streaming-2.9.2-sources.jar \
     export PATH=$PATH:$CASSANDRA_HOME/bin
     ```
 
+* En `$CASSANDRA_HOME/conf/cassandra.yaml` hay que editar los siguientes campos: 
+   
+    `seeds: "<lista de IP de los nodos que se conectarán, separados por coma>"` (sí va con las comillas)
+    ```
+    listen_address: < ip de la máquina actual>
+    rpc_addres: < ip de la máquina actual>
+    broadcast_rpc_address: < ip de la máquina actual>
+    ```
+
+* `cassandra start` inicia el nodo del cluster de la máquina actual y `cassandra stop` detiene el proceso en la máquina actual. 
+
+
 ## Conector de Spark con Cassandra
 Hay que tener `git` y `sbt` instalado.
 
-Luego se clona el repositorio: `https://github.com/anguenot/pyspark-cassandra.git`
+Luego se clona el repositorio: `git clone https://github.com/anguenot/pyspark-cassandra.git`
 
 Luego se ejecuta lo siguiente (se va a demorar un rato):
 ```
