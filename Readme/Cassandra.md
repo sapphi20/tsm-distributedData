@@ -20,6 +20,11 @@
 
 * `cassandra start` inicia el nodo del cluster de la máquina actual y `cassandra stop` detiene el proceso en la máquina actual. 
 
+## Cassandra-driver
+Librería de python para manipular Cassandra desde Python.
+
+### Instalación
+`pip3 install cassandra-driver`
 
 ## Conector de Spark con Cassandra
 Existe un conector de Spark con Cassandra creado por DataStax.
