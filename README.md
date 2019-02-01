@@ -11,8 +11,13 @@ Contiene dos videos y un log de ejemplo:
 * `log_test_1.txt`: Registro de Spark + prints del script copiados desde lo obtenido en la terminal por la salida estándar.
 
 ### Scripts
+
 * `corpus_to_hdfs.py`: Script que transforma el corpus de noticias de diario Cooperativa a varios archivos que son almacenados en el sistema de archivos distribuido de Hadoop. Utiliza `Beautiful Soup` para quitar los tags de HTML y `pyspark` para traspasar los datos al DFS.
 * `test1.py`: 
 * `tfidf_wordbatch.py`: 
 * `tfidf.py`: Script que realiza cálculos, sobre Apache Spark, de TF-IDF con el módulo `mllib` de `pyspark`.
 * `test_cass.py`: Script de prueba que utiliza el conector de Spark-Cassandra.
+
+### Readme
+
+Contiene instrucciones para instalar y configurar Hadoop, Spark y Cassandra
