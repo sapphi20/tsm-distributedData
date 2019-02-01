@@ -157,7 +157,7 @@ export SPARK_MASTER_HOST=<IP del master>
 
 ### Integrar Spark con YARN
 
-* En spark-defaults.conf setear spark.master a "yarn" (sin las comillas).
+* En spark-defaults.conf setear spark.master a "yarn" (sin las comillas). Por defecto trabaja en local.
 
 ### Instalar PySpark
 
@@ -208,12 +208,14 @@ hadoop jar $HADOOP_HOME/hadoop-streaming-2.9.2-sources.jar \
 
 
 ## Conector de Spark con Cassandra
-Hay que tener `git` y `sbt` instalado.
+Existe un conector de Spark con Cassandra creado por DataStax.
+A partir de este se creó un port para que funcionara con Pyspark.
+Si se ejecuta un script con `spark-submit` hay que hacerlo de la siguiente manera:
 
-Luego se clona el repositorio: `git clone https://github.com/anguenot/pyspark-cassandra.git`
+`spark-submit --packages anguenot:pyspark-cassandra:<version> --conf spark.cassandra.connection.host=<IPs del cluster de Cassandra separadas por comas> <nombre del script>.py`
 
-Luego se ejecuta lo siguiente (se va a demorar un rato):
-```
-cd pyspark-cassandra
-sbt compile 
-```
+Para más información ver:
+
+[Spark-Cassandra Connector](https://github.com/datastax/spark-cassandra-connector)
+
+[Pyspark Cassandra](https://github.com/anguenot/pyspark-cassandra)
