@@ -14,14 +14,12 @@ corpus = corpus[ corpus['Cuerpo'].notnull() & (corpus['Cuerpo'].str.len()>2000) 
 corpus = corpus[['ID', 'Cuerpo']]
 
 for i in range(0, corpus.shape[0]):
-    try:
-        id_noticia = corpus['ID'].tolist()[i]
-        print('Copiando noticia %s' %id_noticia)
-        dir_archivo = 'hdfs:///user/hadoop/cooperativa/%s' % id_noticia
-        c = corpus['Cuerpo'].tolist()[i]
-        # soup = BeautifulSoup(c, 'html.parser')
-        # Texto sin tags de HTML se pasa a un RDD de spark
-        cuerpo = sc.parallelize([soup.get_text()]) #cuerpo de la noticia sin tags
-        cuerpo.saveAsTextFile(dir_archivo)
-    except:
-        continue
+    id_noticia = corpus['ID'].tolist()[i]
+    print('Copiando noticia %s' %id_noticia)
+    dir_archivo = 'hdfs:///user/hadoop/cooperativa/%s' % id_noticia
+    c = corpus['Cuerpo'].tolist()[i]
+    soup = BeautifulSoup(c, 'html.parser')
+    # Texto sin tags de HTML se pasa a un RDD de spark
+    cuerpo = sc.parallelize([soup.get_text()]) #cuerpo de la noticia sin tags
+    cuerpo.saveAsTextFile(dir_archivo)
+    

@@ -7,6 +7,7 @@ from cassandra.cluster import Cluster
 ips = ['192.168.101.140', '192.168.101.141', '192.168.101.142', '192.168.101.143']
 cluster = Cluster(ips)
 
+
 if __name__ == '__main__':
 	# Establece conexion con una sesion
 	# connect toma un argumento opcional con el keyspace a eleccion
