@@ -137,7 +137,10 @@ En `/usr/local/hadoop/etc/hadoop/hdfs-site.xml` borrar property `dfs.namenode.na
 * Imprimir un archivo en pantalla: 
 `hdfs dfs -cat archivo`
 * `hdfs dfsadmin -safemode leave`
-
+* `hdfs dfs -count -q /directorio/en/hdfs`: entrega un recuento de espacio y archivos en el HDFS. Esto se entrega en el siguiente orden:
+```
+ QUOTA, REMAINING_QUATA, SPACE_QUOTA, REMAINING_SPACE_QUOTA, DIR_COUNT, FILE_COUNT, CONTENT_SIZE, FILE_NAME
+```
 # Wordbatch
 
 ## Dependencias necesarias
