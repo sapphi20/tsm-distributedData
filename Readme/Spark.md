@@ -14,6 +14,8 @@ export LD_LIBRARY_PATH=/home/hadoop/hadoop/lib/native:$LD_LIBRARY_PATH
 export SPARK_LOCAL_IP=<IP de la máquina actual>
 export SPARK_MASTER_HOST=<IP del master>
 ```
+* Renombrar `/usr/local/spark/conf/slaves.template` a `/usr/local/spark/conf/slaves`.
+* En `/usr/local/spark/conf/slaves` agregar las IPs de los slaves (así se logra un procesamiento distribuido)
 
 ### Integrar Spark con YARN
 

@@ -19,6 +19,8 @@
     ```
 
 * `cassandra start` inicia el nodo del cluster de la máquina actual y `cassandra stop` detiene el proceso en la máquina actual. 
+* Para acceder al shell de Cassandra hay que escribir el siguiente comando: 
+`cqlsh <IP que pertenezca al cluster al que se quiere conectar>`
 
 ## Cassandra-driver
 Librería de python para manipular Cassandra desde Python.
