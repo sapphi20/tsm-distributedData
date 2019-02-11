@@ -17,8 +17,14 @@
     rpc_addres: < ip de la máquina actual>
     broadcast_rpc_address: < ip de la máquina actual>
     ```
+* Crear carpetas para data y commit logs:
+    ```
+    mkdir /var/lib/cassandra
 
-* `cassandra start` inicia el nodo del cluster de la máquina actual y `cassandra stop` detiene el proceso en la máquina actual. 
+    mkdir /var/log/cassandra
+    ```
+
+* `cassandra start` inicia el nodo del cluster de la máquina actual y `cassandra stop` detiene el proceso en la máquina actual (si no funciona, terminar proceso con `kill -9 <pid>`). 
 * Para acceder al shell de Cassandra hay que escribir el siguiente comando: 
 `cqlsh <IP que pertenezca al cluster al que se quiere conectar>`
 
