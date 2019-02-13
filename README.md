@@ -10,6 +10,8 @@ Contiene dos videos con pruebas de Spark con Hadoop y un log de ejemplo:
 * `test_tfidf_2.mp4`: Lo mismo que el video
 * `log_test_1.txt`: Registro de Spark + prints del script copiados desde lo obtenido en la terminal por la salida estándar.
 
+También hay un video de prueba (`test_cassandra1.mp4`) donde se calcula TF-IDF viendo el rendimiento en `htop` y `bmon`.
+
 ### Scripts
 
 * `corpus_to_hdfs.py`: Script que transforma el corpus de noticias de diario Cooperativa a varios archivos que son almacenados en el sistema de archivos distribuido de Hadoop. Utiliza `Beautiful Soup` para quitar los tags de HTML y `pyspark` para traspasar los datos al DFS.
