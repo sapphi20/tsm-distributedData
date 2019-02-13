@@ -14,7 +14,7 @@
     `seeds: "<lista de IP de los nodos que se conectarán, separados por coma>"` (sí va con las comillas)
     ```
     listen_address: < ip de la máquina actual>
-    rpc_addres: < ip de la máquina actual>
+    rpc_address: < ip de la máquina actual>
     broadcast_rpc_address: < ip de la máquina actual>
     ```
 * Crear carpetas para data y commit logs:
@@ -46,3 +46,19 @@ Para más información ver:
 [Spark-Cassandra Connector](https://github.com/datastax/spark-cassandra-connector)
 
 [Pyspark Cassandra](https://github.com/anguenot/pyspark-cassandra)
+
+## Sobre comandos en cqlsh
+
+### ALTER KEYSPACE
+Se puede cambiar el factor de replicación con `ALTER KEYSPACE <nombre> WITH REPLICATION = {'class': '<nombre:estrategia>', <opciones>}` donde las estrategias son `SimpleStrategy` (el mismo factor para todos los nodos) y `NetworkTopology` (cada datacenter tiene su propia replicación).
+
+### CREATE TABLE
+Se crea una tabla de la siguiente forma:
+```
+CREATE TABLE < nombre_tabla> (
+    col_1 type_1,
+    ...,
+    col_n type_n,
+    PRIMARY KEY (pk1, ..., pkm)
+    );
+```
