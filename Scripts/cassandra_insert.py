@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-import random
 from cassandra.cluster import Cluster
-#from pyspark import SparkContext
 
 # Configuracion para conectar al cluster
 # se pueden omitir algunos nodos
@@ -28,8 +26,4 @@ def insert_data():
 			session.execute(insertar, (i, 'hola' + str(i)))
 			print(i)
 if __name__ == '__main__':
-	#sc = SparkContext()
-	#rdd = sc.wholeTextFiles('hdfs:///user/hadoop/cooperativa/2012*')
-	# Quita los textos vacios
-	#rdd = rdd.filter(lambda key: key[1] is not '')
 	insert_data()
