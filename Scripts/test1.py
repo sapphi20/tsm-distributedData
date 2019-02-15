@@ -106,12 +106,11 @@ wb = wordbatch.WordBatch(normalize_text,\
 #procs= n_cpu, n_words= 500, minibatch_size= batch_size)
 #wb.use_sc = True
 wb.dictionary_freeze = True
-# b = Batcher(procs=n_cpu, minibatch_size=batch_size, use_sc=True)
+# b = Batcher(procs=n_cpu, minibatch_size=batch_size, use_sc=True)0
 # lista = pd.DataFrame([corpus['Cuerpo'].tolist()])
 # lista = b.lists2rddbatches(lists=[corpus['Cuerpo'].tolist()], sc=sc)
 # lista = lista.toDF()
 
-## Funciona con transform, pero no con fit_transform... hay que ver el porque
 X = wb.fit_transform(corpus['Cuerpo'].tolist(), reset= False)
 wb.nonZeroIndex = np.array(np.clip(X.getnnz(axis=0) - 1, 0, 1), dtype = bool)
 X = X[:, wb.nonZeroIndex]
