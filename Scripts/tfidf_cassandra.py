@@ -3,13 +3,11 @@ from pyspark import SparkContext
 from pyspark.mllib.feature import HashingTF, IDF
 from pyspark.sql import SQLContext
 from pyspark_cassandra import CassandraSparkContext, Row
-import numpy
 import pandas
 
 # Configuracion
 sc = CassandraSparkContext()
 sqlContext = SQLContext(sc)
-
 
 # Carga una tabla en un keyspace determinado
 # retorna un dataframe (que después se puede pasar a un RDD)
@@ -44,4 +42,6 @@ if __name__ == '__main__':
 	#Convierte RDD a DataFrame de spark
 	tfidf_df = rdd_to_df(tfidf)
 	# Convierte el DataFrame a uno de pandas
-	tfidf_df.toPandas()
+	tfidf_pd = tfidf_df.toPandas()
+	# Guarda el pandas a un pickle
+	tfidf_pd.to_pickle("tfidf.pkl")
