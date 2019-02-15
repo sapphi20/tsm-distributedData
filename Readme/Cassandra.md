@@ -28,13 +28,33 @@
 * Para acceder al shell de Cassandra hay que escribir el siguiente comando: 
 `cqlsh <IP que pertenezca al cluster al que se quiere conectar>`
 
-## Cassandra-driver
+## Multiples datacenter en Cassandra
+* En `$CASSANDRA_HOME/conf/cassandra-rackdc.properties` (en cada nodo): Todos los nodos que pertenezcan al mismo datacenter deben tener el mismo nombre de datacenter, el rack no necesariamente es el mismo.
+    
+    `dc=<nombre datacenter>`
+
+    `rack=rack1 (o el numero de rack que tenga)`
+
+* En `$CASSANDRA_HOME/conf/cassandra-topology.properties`: Cada línea va con el siguiente formato -> `Cassandra Node IP=Data Center:Rack`. Por ejemplo:
+    ```
+    192.168.101.140=DC1:RAC1
+    192.168.101.141=DC1:RAC1
+    192.168.101.142=DC2:RAC1
+    192.168.101.143=DC2:RAC1
+    ```
+* En `$CASSANDRA_HOME/conf/cassandra.yaml`:
+Cambiar `endpoint_snitch` a `GossipingPropertyFileSnitch` (carga el archivo `cassandra-topology.properties` cuando está disponible).
+* En la ubicación donde se definió `data_file_directories`
+rm -rf `$CASSANDRA_DATA/data/system/*`
+* Luego se reinicia el nodo para ver los cambios aplicados
+
+# Cassandra-driver
 Librería de python para manipular Cassandra desde Python.
 
 ### Instalación
 `pip3 install cassandra-driver`
 
-## Conector de Spark con Cassandra
+# Conector de Spark con Cassandra
 Existe un conector de Spark con Cassandra creado por DataStax.
 A partir de este se creó un port para que funcionara con Pyspark.
 Si se ejecuta un script con `spark-submit` hay que hacerlo de la siguiente manera:
@@ -47,10 +67,14 @@ Para más información ver:
 
 [Pyspark Cassandra](https://github.com/anguenot/pyspark-cassandra)
 
-## Sobre comandos en cqlsh
+# Sobre comandos en cqlsh
 
 ### ALTER KEYSPACE
 Se puede cambiar el factor de replicación con `ALTER KEYSPACE <nombre> WITH REPLICATION = {'class': '<nombre:estrategia>', <opciones>}` donde las estrategias son `SimpleStrategy` (el mismo factor para todos los nodos) y `NetworkTopology` (cada datacenter tiene su propia replicación).
+
+Hay que ejecutar `nodetool status -full` en cada nodo afectado después de cambiar la replicación.
+
+El factor de replicación se ve afectado en el porcentaje de dominio (`Owns (effective`) que se muestra al ejecutar `nodetool status`. La suma de los porcentajes indica el factor de replicación, es decir, si suman 300% entonces el factor de replicación es 3.
 
 ### CREATE TABLE
 Se crea una tabla de la siguiente forma:
